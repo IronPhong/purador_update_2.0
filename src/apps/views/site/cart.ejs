@@ -1,0 +1,120 @@
+<%- include("./layouts/head.ejs", {title: "Giỏ hàng" }) %>
+    <%- include("./layouts/header.ejs") %>
+
+        <!-- inner page section -->
+        <section class="inner_page_head">
+            <div class="container_fuild">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <h3>Thông tin giỏ hàng</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end inner page section -->
+
+        <!-- Cart Information -->
+        <section class="why_section layout_padding">
+            <div class="container">
+                <!--	Cart	-->
+                <div id="my-cart">
+                    <div class="row" style="font-weight: bold; padding-bottom: 20px;">
+                        <div class="cart-nav-item col-lg-7 col-md-7 col-sm-12">Thông tin sản
+                            phẩm</div>
+                        <div class="cart-nav-item col-lg-2 col-md-2 col-sm-12">Số lượng</div>
+                        <div class="cart-nav-item col-lg-3 col-md-3 col-sm-12">Giá</div>
+                    </div>
+                    <form method="post" action="/update-cart">
+
+                        <% for(item of cart){%>
+                            <div class="cart-item row">
+                                <div style="display: flex; align-items: center; padding-bottom: 15px;"
+                                    class="cart-thumb col-lg-7 col-md-7 col-sm-12">
+                                    <img style="width: 100px; height: auto;" src="../images/<%=item.thumbnail%>">
+                                    <h4 style="font-size: 14px; padding-left: 20px;">
+                                        <%=item.name%>
+                                    </h4>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-12">
+                                    <input name="products[<%=item.id%>][qty]" type="number" id="quantity"
+                                        class="form-control form-blue quantity" value="<%=item.qty%>" min="1">
+                                </div>
+                                <div class="cart-price col-lg-3 col-md-3 col-sm-12" style="padding-top: 30px;"><b>
+                                        <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                            minimumFractionDigits: 0, }).format(item.price*item.qty) %>
+
+                                    </b><a id="del_btn" href="/delete-cart-<%=item.id%>">X</a></div>
+                            </div>
+                            <%}%>
+
+                                <div class="row" style="margin-top: 30px;">
+                                    <div class="cart-thumb col-lg-7 col-md-7 col-sm-12">
+                                        <button id="update-cart" class="btn btn-success" type="submit" name="sbm">Cập
+                                            nhật giỏ hàng</button>
+                                    </div>
+                                    <div class="cart-total col-lg-2 col-md-2 col-sm-12"><b>Tổng tiền:</b></div>
+                                    <div class="cart-price col-lg-3 col-md-3 col-sm-12" style="color: #fe4c50;"><b>
+                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                                minimumFractionDigits: 0, }).format(cart.reduce((total, item)=> total +
+                                                item.price*item.qty, 0))
+                                                %>
+                                        </b></div>
+                                </div>
+                    </form>
+
+
+
+                </div>
+                <!--	End Cart	-->
+
+                <!--	Customer Info	-->
+                <div id="customer">
+                    <form method="post" action="/order">
+                        <input type="hidden" name="amount" value='<%= cart.reduce((total, item)=> total + item.price*item.qty, 0)
+                        %>'>
+                        <div class="row">
+                            <div id="customer-name" class="col-lg-4 col-md-4 col-sm-12" style="padding-bottom: 10px;">
+                                <input placeholder="Họ và tên (bắt buộc)" type="text" name="name" class="form-control"
+                                    required>
+                            </div>
+                            <div id="customer-phone" class="col-lg-4 col-md-4 col-sm-12">
+                                <input placeholder="Số điện thoại (bắt buộc)" type="text" name="phone"
+                                    class="form-control" required>
+                            </div>
+                            <div id="customer-mail" class="col-lg-4 col-md-4 col-sm-12">
+                                <input placeholder="Email (bắt buộc)" type="text" name="mail" class="form-control"
+                                    required>
+                            </div>
+                            <div id="customer-add" class="col-lg-12 col-md-12 col-sm-12">
+                                <input placeholder="Địa chỉ nhận hàng (bắt buộc)" type="text" name="add"
+                                    class="form-control" required>
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                                <button type="submit" class="btn btn-danger" style="width: 100%;">
+                                    <b>Đặt hàng</b> <br>
+                                    <span>Giao hàng tận nơi siêu tốc</span>
+                                </button>
+                            </div>
+                            <div class="by-now col-lg-6 col-md-6 col-sm-12">
+                                <button type="button" class="btn btn-primary" style="width: 100%;">
+                                    <b>Giải đáp thắc mắc</b> <br>
+                                    <span>Vui lòng call (+84) 816 161 266</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--	End Customer Info	-->
+            </div>
+        </section>
+        <!-- End Cart Information -->
+
+        <%- include("./layouts/2nd_footer.ejs") %>
+            <%- include("./layouts/js.ejs") %>

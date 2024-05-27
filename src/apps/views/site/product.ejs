@@ -1,0 +1,209 @@
+<%- include("./layouts/head.ejs", {title: "Sản phẩm" }) %>
+    <%- include("./layouts/header.ejs") %>
+
+        <!-- inner page section -->
+        <section class="inner_page_head">
+            <div class="container_fuild">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <h3>Chi tiết sản phẩm</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end inner page section -->
+
+        <!-- Product Information -->
+        <section class="product-details spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="">
+                            <div class="img_field">
+                                <img class="product_img" src="../images/<%=product.thumbnail%>" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="prd_infor">
+                            <h3>
+                                <%=product.name%>
+                            </h3>
+                            <div class="align_item">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span></span>
+                            </div>
+                            <div class="align_item" style="color: #f7444e; font-weight: 600; font-size:20px;">
+                                <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                    minimumFractionDigits: 0, }).format(product.price) %>
+                            </div>
+                            <p class="align_item">
+                                <%- product.status%>
+                            </p>
+                            <% if(product.is_stock){%>
+                                <form method="post" action="/add-to-cart">
+                                    <input type="hidden" name="id" value="<%=product.id%>">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-sm-3 my-1 main_input">
+                                            <div class="input-group ">
+                                                <input type="number" class="form-control" value="1" name="qty"
+                                                    id="quantity" placeholder="Số lượng">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto my-1">
+                                            <button type="submit" class="option2 buy_btn">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <% }%>
+
+
+                                    <ul class="prd_status">
+                                        <li><b>Tình trạng:</b>
+
+                                            <% if(product.is_stock){%>
+                                                <span id="status">Còn hàng</span>
+                                                <%} else{%>
+                                                    <span id="status" class="text-danger">Hết hàng</span>
+                                                    <% }%>
+
+                                        </li>
+                                        <!-- <li><b>Phí vận chuyển:</b> <span>Miễn phí <samp></samp></span> -->
+                                        </li>
+                                        <li><b>Dung tích:</b> <span>
+                                                <%=product.cc%>
+                                            </span></li>
+                                        <li><b>Mua trên các sàn:</b>
+                                            <div class="share">
+                                                <a href="<%=product.shopee%>" target="_blank"><img
+                                                        style="width: 20px; height: 20px;" src="../images/shopee.png"
+                                                        alt=""></a>
+
+                                                <a href="<%=product.tiktok%>" target="_blank"><img
+                                                        style="width: 20px; height: 20px;" src="../images/tiktok.png"
+                                                        alt=""></a>
+
+                                                <a href="/coming_soon" target="_blank"><img
+                                                        style="width: 20px; height: 20px;" src="../images/lazada.png"
+                                                        alt=""></a>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="prd_description_field">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                        aria-selected="true">Mô tả</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                        aria-selected="false">Thông tin sản phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                        aria-selected="false">Reviews <span></span></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="product_details_tab first_tab">
+                                        <h6>
+                                            <%=product.short_name%>
+                                        </h6>
+                                        <p style="margin: 0;">
+                                            <%- product.description%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    <div class="product_details_tab">
+                                        <h6>
+                                            <%=product.short_name%>
+                                        </h6>
+                                        <p>
+                                            <%- product.status%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="product_details_tab">
+
+                                        <!-- Comment -->
+                                        <div id="comment" class="row" style="margin-top: 20px;">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                                <form method="post">
+                                                    <div class="form-group">
+                                                        <label>Tên:</label>
+                                                        <input name="full_name" required="" type="text"
+                                                            class="form-control ">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email:</label>
+                                                        <input name="email" required="" type="email"
+                                                            class="form-control" id="pwd">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Bình luận:</label>
+                                                        <textarea name="body" required="" rows="8"
+                                                            class="form-control"></textarea>
+                                                    </div>
+                                                    <button style="background-color: #0A6847; border: none;"
+                                                        type="submit" name="sbm" class="btn btn-primary">Xác
+                                                        nhận</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- End Comment -->
+
+                                        <h5 style="margin-top: 20px;">
+                                            Top comments:
+                                        </h5>
+
+                                        <!--	Comments List	-->
+                                        <div id="comments-list" class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                                <% for(comment of comments){%>
+                                                    <div class="comment-item">
+                                                        <ul>
+                                                            <li><b>
+                                                                    <%=comment.full_name%>
+                                                                </b></li>
+                                                            <li style="font-size: 12px;">
+                                                                <%=comment.createdAt%>
+                                                            </li>
+                                                            <li style="padding-top: 12px; padding-bottom: 15px;">
+                                                                <%=comment.body%>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <% }%>
+                                            </div>
+                                        </div>
+
+                                        <!--	End Comments List	-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Product Information -->
+
+        <%- include("./layouts/2nd_footer.ejs") %>
+            <%- include("./layouts/js.ejs") %>

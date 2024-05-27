@@ -1,0 +1,236 @@
+<%- include("./layouts/head.ejs", {title: "Pura D'or" }) %>
+   <%- include("./layouts/header.ejs") %>
+
+      <%- include("./layouts/slider.ejs") %>
+         <%- include("./layouts/services.ejs") %>
+
+
+
+            <!-- arrival section -->
+            <!-- <section class="arrival_section">
+               <div class="container">
+                  <div class="box">
+                     <div class="arrival_bg_box">
+                        <img src="" alt="">
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6 ml-auto">
+                           <div class="heading_container remove_line_bt">
+                              <h2>
+                                 #NewArrivals
+                              </h2>
+                           </div>
+                           <p style="margin-top: 20px;margin-bottom: 30px;">
+                              Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit
+                              ullam sit earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem
+                              similique ex unde!
+                           </p>
+                           <a href="/shop">Shop Now</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section> -->
+            <!-- end arrival section -->
+
+            <!-- product section -->
+            <section class="product_section layout_padding">
+               <div class="container">
+                  <div class="heading_container heading_center">
+                     <h2>
+                        <!-- <span>Sản phẩm</span> --> Sản phẩm nổi bật
+                     </h2>
+                  </div>
+                  <div class="row">
+                     <% for(product of products){%>
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                           <div class="box">
+                              <div class="option_container">
+                                 <div class="options">
+                                    <a href="/product-<%=product.slug%>.<%=product._id%>" class="option1">
+                                       Xem sản phẩm
+                                    </a>
+                                    <!-- <a href="" class="option2">
+                                       Mua ngay
+                                    </a> -->
+                                    <% if(product.is_stock){%>
+                                       <form method="post" action="/add-to-cart">
+                                          <input type="hidden" name="id" value="<%=product.id%>">
+                                          <div class="form-row align-items-center">
+                                             <div class="col-sm-3 my-1 main_input">
+                                                <div style="display: none;" class="input-group ">
+                                                   <input type="number hidden" class="form-control" max="1" value="1"
+                                                      name="qty" id="quantity" placeholder="Số lượng">
+                                                </div>
+                                             </div>
+                                             <div class="col-auto my-1">
+                                                <button type="submit" class="option2">Mua ngay</button>
+                                             </div>
+                                          </div>
+                                       </form>
+                                       <% }%>
+                                 </div>
+                              </div>
+                              <div class="img-box">
+                                 <img src="../images/<%=product.thumbnail%>" alt="">
+                              </div>
+
+                              <h5 style="text-align: center; font-size: 20px; color: #284938; font-weight: 600;">
+                                 <%=product.short_name%>
+                              </h5>
+                              <h6 style="text-align: center; margin-top: 20px; color: #f7444e; font-weight: 600;">
+                                 <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                    minimumFractionDigits: 0, }).format(product.price) %>
+                              </h6>
+
+                           </div>
+                        </div>
+                        <%}%>
+                  </div>
+                  <div class="btn-box">
+                     <a href="/shop">
+                        Tất cả sản phẩm
+                     </a>
+                  </div>
+               </div>
+            </section>
+            <!-- end product section -->
+
+            <!-- subscribe section -->
+            <section class="subscribe_section">
+               <div class="container-fuild">
+                  <div class="box">
+                     <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                           <div class="subscribe_form ">
+                              <div class="heading_container heading_center">
+                                 <h3>Đăng ký để nhận ưu đãi giảm giá sớm nhất</h3>
+                              </div>
+                              <p style="color: #284938;">Quà tặng trao tay, thay lời muốn nói</p>
+                              <form action="">
+                                 <input type="email" placeholder="nhập email của bạn">
+                                 <button>
+                                    đăng ký
+                                 </button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- end subscribe section -->
+
+
+
+            <!-- client section -->
+            <section class="client_section layout_padding">
+               <div class="container">
+                  <div class="heading_container heading_center">
+                     <h2>
+                        Phản hồi của khách hàng
+                     </h2>
+                  </div>
+                  <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="box col-lg-10 mx-auto">
+                              <div class="img_container">
+                                 <div class="img-box">
+                                    <div class="img_box-inner">
+                                       <img src="images/c4.png" alt="">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="detail-box">
+                                 <h5>
+                                    Thanh Thanh Huyền
+                                 </h5>
+                                 <h6>
+                                    Khách hàng
+                                 </h6>
+                                 <p>
+                                    Tóc tôi bớt khô xơ và rụng, ai cũng khen tóc bóng mượt hơn hẳn
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                        <% for(customers of customers){%>
+                           <div class="carousel-item">
+                              <div class="box col-lg-10 mx-auto">
+                                 <div class="img_container">
+                                    <div class="img-box">
+                                       <div class="img_box-inner">
+                                          <img src="../images/<%=customers.ava%>" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="detail-box">
+                                    <h5>
+                                       <%=customers.full_name%>
+                                    </h5>
+                                    <h6>
+                                       <%=customers.role%>
+                                    </h6>
+                                    <p>
+                                       <%=customers.comment%>
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <%}%>
+                     </div>
+                     <div class="carousel_btn_box">
+                        <a class="carousel-control-prev" href="#carouselExample3Controls" role="button"
+                           data-slide="prev">
+                           <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                           <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExample3Controls" role="button"
+                           data-slide="next">
+                           <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                           <span class="sr-only">Next</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- end client section -->
+
+            <!-- Blog -->
+            <section class="why_section layout_padding">
+               <div class="container">
+                  <div class="heading_container heading_center">
+                     <h2>
+                        Câu chuyện của Tóc và Da
+                     </h2>
+                  </div>
+                  <div class="row" style="margin-top: 50px;">
+                     <div class="card-deck">
+                        <%for(blog of blogs){%>
+                           <div class="card blog_list">
+                              <a href="/blog-<%=blog.slug%>.<%=blog._id%>"><img src="../images/<%=blog.thumbnail%>"
+                                    class="card-img-top" alt="..."></a>
+                              <div class="card-body">
+                                 <a href="/blog-<%=blog.slug%>.<%=blog._id%>">
+                                    <h5 class="card-title">
+                                       <%=blog.title%>
+                                    </h5>
+                                 </a>
+                                 <p class="card-text">
+                                    <%=blog.brief%>
+                                 </p>
+                                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+                     </p> -->
+                              </div>
+                           </div>
+                           <%}%>
+                     </div>
+
+                  </div>
+               </div>
+            </section>
+            <!-- End Blog -->
+
+            <%- include("./layouts/footer.ejs") %>
+               <%- include("./layouts/js.ejs") %>

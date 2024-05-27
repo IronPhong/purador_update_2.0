@@ -1,0 +1,80 @@
+<%- include("./layouts/head.ejs", {title: "Tìm kiếm" }) %>
+    <%- include("./layouts/header.ejs") %>
+        <!-- inner page section -->
+        <section class="inner_page_head">
+            <div class="container_fuild">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <h3>Tìm kiếm sản phẩm</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end inner page section -->
+
+        <!-- product section -->
+        <section class="product_section layout_padding">
+            <div class="container">
+                <div class="heading_container heading_center">
+                    <h2>
+                        Kết quả tìm kiếm <span>
+                            <%=keyword%>
+                        </span> (<%=total%> sản phẩm)
+                    </h2>
+                </div>
+                <div class="row">
+                    <% for(product of products){%>
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="box">
+                                <div class="option_container">
+                                    <div class="options">
+                                        <a href="/product-<%=product.slug%>.<%=product._id%>" class="option1">
+                                            Xem sản phẩm
+                                        </a>
+                                        <!-- <a href="" class="option2">
+                                       Mua ngay
+                                    </a> -->
+                                        <% if(product.is_stock){%>
+                                            <form method="post" action="/add-to-cart">
+                                                <input type="hidden" name="id" value="<%=product.id%>">
+                                                <div class="form-row align-items-center">
+                                                    <div class="col-sm-3 my-1 main_input">
+                                                        <div style="display: none;" class="input-group ">
+                                                            <input type="number hidden" class="form-control" max="1"
+                                                                value="1" name="qty" id="quantity"
+                                                                placeholder="Số lượng">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto my-1">
+                                                        <button type="submit" class="option2">Mua ngay</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <% }%>
+                                    </div>
+                                </div>
+                                <div class="img-box">
+                                    <img src="../images/<%=product.thumbnail%>" alt="">
+                                </div>
+                                <h5 style=" text-align: center; font-size: 20px; color: #284938; font-weight: 600;">
+                                    <%=product.short_name%>
+                                </h5>
+                                <h6 style="text-align: center; margin-top: 20px; color: #f7444e; font-weight: 600;">
+                                    <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                        minimumFractionDigits: 0, }).format(product.price) %>
+                                </h6>
+                            </div>
+                        </div>
+                        <%}%>
+                </div>
+
+
+            </div>
+        </section>
+        <!-- end product section -->
+
+
+        <%- include("./layouts/2nd_footer.ejs") %>
+            <%- include("./layouts/js.ejs") %>

@@ -1,0 +1,120 @@
+<%- include("./layouts/head.ejs", {title: "Liên hệ" }) %>
+   <%- include("./layouts/header.ejs") %>
+
+      <!-- inner page section -->
+      <section class="inner_page_head">
+         <div class="container_fuild">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="full">
+                     <h3>Thông tin liên hệ</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end inner page section -->
+      <!-- why section -->
+      <section class="why_section layout_padding">
+         <div class="container">
+            <!-- Map Container -->
+
+            <div class="row">
+               <div class="col">
+                  <div id="google_map">
+                     <div class="map_container">
+                        <iframe
+                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.068452248124!2d105.77310187603392!3d21.029946887736383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134553b2367ca7b%3A0x4aea87d9e3511e84!2sChung%20c%C6%B0%20Dolphin%20Plaza!5e0!3m2!1svi!2s!4v1715934098669!5m2!1svi!2s"
+                           width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+            <!-- Contact Us -->
+
+            <div class="row" style="margin-top: 30px;">
+
+               <div class="col-lg-6 contact_col">
+                  <div class="contact_contents">
+                     <h1>Thông tin</h1>
+                     <p>Hãy để lại lời nhắn hoặc liên hệ trực tiếp với chúng tôi để chia sẻ ý kiến, gửi câu hỏi hoặc yêu
+                        cầu của bạn.
+                        Chúng tôi luôn mong muốn được đồng hành và hỗ trợ bạn tốt nhất!</p>
+                     <div class="text_infor">
+                        <p> <span>Hotline:</span> +84 816 161 266</p>
+                        <p> <span>Email:</span> store@daugoipurador.com</p>
+                     </div>
+                     <div class="text_infor">
+                        <p> <span>Đ/c 1:</span> Pura D'or Nam Từ Liêm
+                           Dolphin Plaza, Mỹ Đình 2, Nam Từ Liêm, Hà Nội</p>
+
+                        <p> <span>Đ/c 2:</span> Pura D'or Tây Hồ Số 38/76 An Dương, Yên Phụ, Tây Hồ, Hà Nội</p>
+
+                        <p> <span>Đ/c 3:</span> Pura D'or Tp.Hcm</p>
+                     </div>
+                     <div class="text_infor">
+                        <p> <span>Giờ mở cửa:</span> 8.00-18.00 Thứ 2 - Thứ 6</p>
+                        <p><span>Chủ nhật:</span> Đóng cửa</p>
+                     </div>
+                  </div>
+
+                  <!-- Follow Us -->
+
+                  <div class="follow_us_contents">
+                     <h1>Follow Us</h1>
+                     <ul class="social d-flex flex-row">
+                        <li><a href="https://www.facebook.com/FCommerce2016" target="_blank"><i style="color: #274938;"
+                                 class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="/coming_soon" target="_blank"><i style="color: #274938;" class="fa fa-twitter"
+                                 aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="/coming_soon" target="_blank"><i style="color: #274938;" class="fa fa-google-plus"
+                                 aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="/coming_soon" target="_blank"><i style="color: #274938;" class="fa fa-instagram"
+                                 aria-hidden="true"></i></a>
+                        </li>
+                     </ul>
+                  </div>
+
+               </div>
+
+               <div class="col-lg-6 get_in_touch_col">
+                  <div class="get_in_touch_contents">
+                     <h1>Liên hệ với Pura D'or</h1>
+                     <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn.</p>
+                     <form action="post">
+                        <div>
+                           <input id="input_name" class="form_input input_name input_ph" type="text" name="name"
+                              placeholder="Họ và tên" required="required" data-error="Name is required.">
+                           <input id="input_email" class="form_input input_email input_ph" type="email" name="email"
+                              placeholder="Email" required="required" data-error="Valid email is required.">
+                           <input id="input_website" class="form_input input_website input_ph" type="url" name="name"
+                              placeholder="Website" required="required" data-error="Name is required.">
+                           <textarea id="input_message" class="input_ph input_message" name="message"
+                              placeholder="Lời nhắn" rows="3" required
+                              data-error="Please, write us a message."></textarea>
+                        </div>
+                        <div>
+                           <button id="review_submit" type="submit" class="buy_btn message_submit_btn trans_300"
+                              value="Submit">Xác nhận</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+
+         </div>
+      </section>
+      <!-- end why section -->
+
+
+
+      <%- include("./layouts/2nd_footer.ejs") %>
+         <%- include("./layouts/js.ejs") %>

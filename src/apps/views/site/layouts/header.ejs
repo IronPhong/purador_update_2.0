@@ -1,0 +1,98 @@
+<div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/"><img width="160"
+                        src="https://purador.com/cdn/shop/files/purador_black_with_green_leaf_-_ppp.png?v=1670445960&width=500"
+                        alt="#" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <!-- <form action="/search" class="form-inline">
+                            <input style="width: 350px; border: #274938 solid 1px;"
+                                class="form-control my-2 my-sm-0 nav_search-btn " name="keyword" type="search"
+                                placeholder=" Tìm kiếm" aria-label="Search">
+                            <button class="search_btn" type="submit"><i class="fa fa-search"
+                                    aria-hidden="true"></i></button>
+                        </form> -->
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span
+                                        class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/about">About</a></li>
+                                <li><a href="testimonial.html">Testimonial</a></li>
+                            </ul>
+                        </li> -->
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/shop" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Sản phẩm <span
+                                        class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <%for(category of categories){%>
+                                    <li><a href="/category-<%=category.slug%>.<%=category._id%>">
+                                            <%=category.title%>
+                                        </a></li>
+                                    <%}%>
+                            </ul>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/shop">Shop</a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/allBlog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">Về Pura D'or</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Liên hệ</a>
+                        </li>
+
+                        <li class="nav-item fix_cart">
+                            <a href="/cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+                            </a><span id="cart_numb">
+                                <%=totalCartItem%>
+                            </span>
+                        </li>
+
+                        <!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button> -->
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="true"> <span class="nav-label"><i class="fa fa-search"
+                                        aria-hidden="true"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form action="/search" class="form-inline">
+                                        <input style="width: 150px;" class="form-control mt-6 search_form"
+                                            name="keyword" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
